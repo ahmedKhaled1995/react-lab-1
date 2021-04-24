@@ -12,7 +12,7 @@ const AddTask = (props) => {
             return;
         }
 
-        props.onSubmit({ text })
+        props.onSubmit({ user_id: text })
 
         setText('');
     }
