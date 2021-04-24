@@ -5,7 +5,9 @@ const Posts = (props) => {
     return (
         <ul>
             {props.posts.map((post) => {
-                return <li key={post.id}><Post post={post} /></li>
+                return <li key={post.id}><Post post={post} />
+                <input type="checkbox" />
+                </li>
             })}
         </ul>
     )
