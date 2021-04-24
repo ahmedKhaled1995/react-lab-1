@@ -1,12 +1,13 @@
 import Post from "./Post"
 
 const Posts = (props) => {
+    console.log(props.posts);
     return (
         <ul>
-            {props.posts.map((post)=>{
-                <li><Post post={post}/></li>
+            {props.posts.map((post) => {
+                return <li key={post.id}><Post post={post} /></li>
             })}
         </ul>
     )
 }
-export default Posts
+export default Posts;
