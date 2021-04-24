@@ -5,7 +5,7 @@ const Posts = (props) => {
     return (
         <ul>
             {props.posts.map((post) => {
-                return <li key={post.id}><Post post={post} handleOnClick={props.handleOnClick} />
+                return <li key={post.id}><Post post={post} handleOnClick={props.handleOnClick} showButton={true} />
                 </li>
             })}
         </ul>
