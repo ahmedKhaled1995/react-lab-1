@@ -1,18 +1,18 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-const AddTask = (props) => {
-    const [text, setText] = useState('');
+const Input = (props) => {
+    const [userId, setText] = useState('');
 
 
     const onSubmit = (e) => {
         e.preventDefault();
 
-        if (!text) {
+        if (!userId) {
             alert('Please add a user id!');
             return;
         }
 
-        props.onSubmit({ user_id: text })
+        props.onSubmit({ userId });
 
         setText('');
     }
@@ -23,13 +23,13 @@ const AddTask = (props) => {
                 <input
                     type='text'
                     placeholder='Enter id...'
-                    value={text}
+                    value={userId}
                     onChange={(e) => setText(e.target.value)}
                 />
             </div>
-            <input type='submit' value='Posts' className='btn btn-block' />
+            <input type='submit' value='Get Posts' className='btn btn-block' />
         </form>
     )
 }
 
-export default AddTask
+export default Input

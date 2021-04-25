@@ -1,29 +1,17 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useContext } from "react";
+import LoginContext from "../LoginContext";
+
+import axios from "axios";
 
 const useTasks = (initialTasks) => {
+    const auth = useContext(LoginContext);
+    const [posts, setPosts] = useState(initialTasks);
 
-    const [posts, setPosts] = useState(
-        initialTasks
-    );
-
-    // useEffect(() => {
-    //     // Your logic
-    //     // This will return all the posts that belong to the first user
-    //     fetch('https://jsonplaceholder.typicode.com/posts?userId=1')
-    //         .then((response) => response.json())
-    //         .then((json) => console.log(json));
-
-    // }, []);
-
-    const getUserData = (user_id_obj) => {
-        const user_id = user_id_obj.user_id
-        // console.log(user_id);
-        fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user_id}`)
-            .then((response) => response.json())
-            .then((json) => {
-                //console.log(json);
-                setPosts(json);
-            });
+    const getUserData = async () => {
+        const userId = auth.userId;
+        const userData = await axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
+        const userPosts = userData.data
+        setPosts(userPosts);
     };
 
 

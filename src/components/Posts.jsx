@@ -1,12 +1,15 @@
-import Post from "./Post"
+import Post from "./Post";
 
 const Posts = (props) => {
-    //console.log(props.posts);
+
     return (
         <ul>
             {props.posts.map((post) => {
-                return <li key={post.id}><Post post={post} handleOnClick={props.handleOnClick} showButton={true} />
-                </li>
+                return (
+                    <li key={post.id}>
+                        <Post post={post} showBody={false} showLink={true} /><hr />
+                    </li>
+                )
             })}
         </ul>
     )

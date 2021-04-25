@@ -7,20 +7,28 @@ const PostDetails = (props) => {
     const [postComments, setPostComments] = useState([]);
 
     useEffect(() => {
-        fetch(`https://jsonplaceholder.typicode.com/posts/${props.postId}/comments`)
+        fetch(`https://jsonplaceholder.typicode.com/posts/${props.match.params.id}/comments`)
             .then((response) => response.json())
-            .then((json) => setPostComments(json));
+            .then((json) => setPostComments(json))
+            .catch((err) => {
+                console.log("No post");
+                console.log(err);
+            });
 
-        fetch(`https://jsonplaceholder.typicode.com/posts/${props.postId}`)
+        fetch(`https://jsonplaceholder.typicode.com/posts/${props.match.params.id}`)
             .then((response) => response.json())
-            .then((json) => setPost(json));
+            .then((json) => {
+                setPost(json);
+            }).catch((err) => {
+                console.log("No post");
+                console.log(err);
+            });
 
-    }, []);
+    }, [props.match.params.id]);
 
     return (
         <div>
-            <button onClick={props.handleShowPosts}>Return</button>
-            <Post post={post} showButton={false} />
+            <Post post={post} showButton={false} showLink={false} />
             <h2>Comments</h2>
             {postComments.map((post) => {
                 return (<div key={post.id}>
