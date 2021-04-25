@@ -23,6 +23,8 @@ const Auth = (props) => {
             console.log("valid");
             auth.userName = user.username;
             auth.userId = user.id;
+            localStorage.setItem("userName", auth.userName);
+            localStorage.setItem("userId", auth.userId);
             props.handleLogin();
             history.push('/');
         }

@@ -8,7 +8,7 @@ const Guard = (props) => {
 
     return (
         <Fragment>
-            {auth.userName ? props.children : <Redirect to="/login/" />}
+            {(auth.userName || localStorage.getItem("userName")) ? props.children : <Redirect to="/login/" />}
         </Fragment>
     )
 }

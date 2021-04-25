@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 
@@ -13,6 +12,7 @@ const Header = (props) => {
                 <Link to="/"><li>Home</li></Link>
                 <Link to="/create"><li>Create Post</li></Link>
                 <Link to="/about"><li>About</li></Link>
+                <Link to="/logout"><li>Logout</li></Link>
                 <h3>{props.userName}</h3>
             </ul> : ""}
 

@@ -19,7 +19,7 @@ const CreatePost = () => {
         };
         const data = await axios.post('https://jsonplaceholder.typicode.com/posts', payload);
         const post = data.data;
-        // console.log(post);
+        console.log(post);
         history.push(`/posts/7`);
     };
 
